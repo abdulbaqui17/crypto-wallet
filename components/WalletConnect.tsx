@@ -28,7 +28,7 @@ export default function WalletConnect() {
   }
 
   return (
-    <Card className="max-w-xl mx-auto">
+    <Card className="h-full">
       <div className="flex items-center justify-between">
         <div>
           <h2 className="text-xl font-bold text-white">Wallet</h2>

@@ -23,7 +23,7 @@ export default function TransactionsList({ address }: { address?: string | null 
   })
 
   return (
-    <Card className="mt-6 max-w-3xl mx-auto">
+    <Card className="h-full">
       <h3 className="text-lg font-bold text-white">Recent Transactions</h3>
       {isLoading && <div className="mt-4 text-sm text-gray-300">Loading...</div>}
       {!isLoading && (!data || data.length === 0) && <div className="mt-4 text-sm text-gray-300">No recent transactions</div>}

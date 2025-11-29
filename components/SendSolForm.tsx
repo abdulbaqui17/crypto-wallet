@@ -40,7 +40,7 @@ export default function SendSolForm() {
   })
 
   return (
-    <Card className="mt-6 max-w-xl mx-auto">
+    <Card className="h-full">
       <h3 className="text-lg font-bold text-white">Send SOL</h3>
       <div className="mt-4 grid gap-3">
         <Input placeholder="Recipient address" value={to} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setTo(e.target.value)} />

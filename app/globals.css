@@ -1,0 +1,112 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body, #__next {
+  height: 100%;
+}
+
+/* Classy background with spotlight and blinking dots */
+.app-bg {
+  background: #000000;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Moving spotlights */
+.app-bg::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle 800px at var(--spotlight-x, 20%) var(--spotlight-y, 30%), rgba(255, 255, 255, 0.15), transparent 40%),
+    radial-gradient(circle 600px at var(--spotlight-x2, 80%) var(--spotlight-y2, 70%), rgba(255, 255, 255, 0.1), transparent 40%);
+  animation: spotlight 20s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Blinking dots pattern */
+.app-bg::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle, rgba(255, 255, 255, 0.8) 1px, transparent 1px);
+  background-size: 50px 50px;
+  animation: blink 3s ease-in-out infinite;
+  pointer-events: none;
+  opacity: 0.3;
+  z-index: 1;
+}
+
+@keyframes spotlight {
+  0% {
+    --spotlight-x: 20%;
+    --spotlight-y: 30%;
+    --spotlight-x2: 80%;
+    --spotlight-y2: 70%;
+  }
+  50% {
+    --spotlight-x: 70%;
+    --spotlight-y: 60%;
+    --spotlight-x2: 30%;
+    --spotlight-y2: 40%;
+  }
+  100% {
+    --spotlight-x: 20%;
+    --spotlight-y: 30%;
+    --spotlight-x2: 80%;
+    --spotlight-y2: 70%;
+  }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 0.5; }
+}
+
+.glass {
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4),
+              inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.glass::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.5s;
+}
+
+.glass:hover::before {
+  left: 100%;
+}
+
+/* Fix wallet button styling */
+.wallet-adapter-button {
+  height: auto !important;
+  padding: 0.5rem 1rem !important;
+  line-height: 1.5 !important;
+  white-space: nowrap !important;
+}
+
+.wallet-adapter-button-trigger {
+  height: auto !important;
+  line-height: 1.5 !important;
+}
